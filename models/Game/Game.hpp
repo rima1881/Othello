@@ -26,6 +26,10 @@
 
 class Game
 {
+private:
+
+    static void render();
+
 public:
 
     /*
