@@ -5,15 +5,16 @@
 class PlayableSquare
 {
 private:
-    /* data */
+    Piece* content;
 public:
-    PlayableSquare(/* args */);
-
+    PlayableSquare();
+    PlayableSquare(Piece* content);
+    PlayableSquare(const PlayableSquare &PlayableSquare);
 
     //ISQUARE
     virtual bool playable();
     virtual Piece* getContent();
-    virtual char setContent();
+    virtual void setContent(Piece*);
     virtual int getX();
     virtual int getY();
 };

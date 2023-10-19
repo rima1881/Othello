@@ -4,9 +4,12 @@
 class Piece
 {
 private:
-    /* data */
+    bool Black;
 public:
-    Piece(/* args */);
+    Piece(bool Black);
+    bool IsBlack();
+    void Convert();
+    void Draw();
 };
 
 #endif
