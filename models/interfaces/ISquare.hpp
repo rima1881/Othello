@@ -11,6 +11,7 @@ public:
     virtual int getX() = 0;
     virtual int getY() = 0;
     virtual void Draw() = 0;
+    virtual void ConvertPiece() = 0;
 };
 
 #endif

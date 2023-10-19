@@ -1,12 +1,18 @@
 #ifndef USQUARE_H
 #define USQUARE_H
+#include "../Square/Square.hpp"
 
-class UnPlayableSquare
+
+
+class UnPlayableSquare : public Square
 {
 private:
-    /* data */
+    Piece* content;
 public:
+
     UnPlayableSquare(/* args */);
+    virtual bool playable();
+
 };
 
 #endif

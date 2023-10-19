@@ -1,9 +1,9 @@
 #ifndef PSQUARE_H
 #define PSQUARE_H
 #include "../Piece/Piece.hpp"
-#include "../interfaces/ISquare.hpp"
+#include "../Square/Square.hpp"
 
-class PlayableSquare : public ISquare
+class PlayableSquare : public Square
 {
 private:
     Piece* content;
