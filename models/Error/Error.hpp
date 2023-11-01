@@ -5,7 +5,7 @@ private:
     std::string msg;
 public:
 
-    Error(std::string);
+    Error(std::string msg);
     std::string getMsg();
 
 };

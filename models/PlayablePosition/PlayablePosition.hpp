@@ -1,16 +1,16 @@
 #ifndef PSQUARE_H
 #define PSQUARE_H
 #include "../Piece/Piece.hpp"
-#include "../Square/Square.hpp"
+#include "../Position/Position.hpp"
 
-class PlayableSquare : public Square
+class PlayablePosition : public Square
 {
 private:
     Piece* content;
 public:
-    PlayableSquare();
-    PlayableSquare(Piece* content);
-    PlayableSquare(const PlayableSquare &PlayableSquare);
+    PlayablePosition();
+    PlayablePosition(Piece* content);
+    PlayablePosition(const PlayablePosition &PlayableSquare);
 
     //ISQUARE
     virtual void Draw();

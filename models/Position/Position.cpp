@@ -1,4 +1,4 @@
-#include "./Square.hpp"
+#include "./Position.hpp"
 #include <iostream>
 #include "../Error/Error.hpp"
 
@@ -23,8 +23,9 @@ void Square::Draw(){
 
 void Square::ConvertPiece(){
 
-    if(content == nullptr)
-        throw Error("there is an error with the game. the game tried to convert empty square");
+    if(content == nullptr){
+        throw 12;
+    }
 
 
     content -> Convert();
