@@ -2,26 +2,26 @@
 #include <iostream>
 #include "../Error/Error.hpp"
 
-Piece* Square::getContent(){
+Piece* Position::getContent(){
     return content;
 }
-void Square::setContent(Piece* content){
-    this -> content = content; 
+void Position::setContent(Piece* content){
+    throw 11;
 }
-int Square::getX(){
+int Position::getX(){
     return this -> x;
 }
-int Square::getY(){
+int Position::getY(){
     return this -> y;
 }
-void Square::Draw(){
+void Position::Draw(){
     if(this -> content == nullptr)
         std::cout << " ";
     else
         content -> Draw();
 }
 
-void Square::ConvertPiece(){
+void Position::ConvertPiece(){
 
     if(content == nullptr){
         throw 12;
@@ -32,3 +32,6 @@ void Square::ConvertPiece(){
 
 }
 
+bool Position::playable(){
+    return false;
+}

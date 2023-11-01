@@ -1,9 +1,8 @@
 #ifndef SQUARE_H
 #define SQUARE_H
-#include "../interfaces/ISquare.hpp"
 #include "../Piece/Piece.hpp"
 
-class Square : public ISquare
+class Position
 {
 private:
 
@@ -13,12 +12,14 @@ private:
 
 public:
 
-    virtual Piece* getContent();
+    virtual bool playable();
     virtual void setContent(Piece*);
-    virtual int getX();
-    virtual int getY();
-    virtual void Draw();
-    virtual void ConvertPiece();
+
+    Piece* getContent();
+    int getX();
+    int getY();
+    void Draw();
+    void ConvertPiece();
     
 };
 
