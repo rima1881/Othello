@@ -27,10 +27,8 @@ int Position::getY(){
 }
 void Position::Draw(){
 
-    if(content == nullptr)
-        std::cout << " ";
-    else
-        content -> Draw();
+    //the reasoning behind this implymention is explained in piece.hpp file
+    Piece::Draw(content);
 
 }
 

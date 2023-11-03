@@ -30,8 +30,9 @@ class Game
 private:
 
     static void render();
-    static std::vector<std::string> savedGamesNames;
-    static std::vector<std::string> savedGamesAddresses;
+
+        //I don't like them being static but I didn't want to think :)
+    static std::vector<std::string> savedGames;
     static std::vector<std::string> initialMaps;
 
 public:
