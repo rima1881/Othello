@@ -12,14 +12,17 @@ private:
 
 public:
 
+    Position();
+    Position(Piece* content);
+
     virtual bool playable();
     virtual void setContent(Piece*);
+    virtual void ConvertPiece();
 
     Piece* getContent();
     int getX();
     int getY();
     void Draw();
-    void ConvertPiece();
     
 };
 

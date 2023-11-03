@@ -1,17 +1,17 @@
 #ifndef BOARD_H
 #define BOARD_H
-#include "../interfaces/ISquare.hpp"
+#include "../Position/Position.hpp"
 
 
 class Board
 {
 private:
-    ISquare*** map;
+    Position*** map;
 public:
     Board(int state);
     Board(const Board &b);
     void Draw();
-    ISquare*** getMap();
+    Position*** getMap();
 };
 
 #endif

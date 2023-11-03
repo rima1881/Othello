@@ -2,6 +2,7 @@
 #define GAME_H
 #include "../Player/Player.hpp"
 #include "../Board/Board.hpp"
+#include <vector>
 
 
 /*
@@ -29,6 +30,9 @@ class Game
 private:
 
     static void render();
+    static std::vector<std::string> savedGamesNames;
+    static std::vector<std::string> savedGamesAddresses;
+    static std::vector<std::string> initialMaps;
 
 public:
 
@@ -52,7 +56,9 @@ public:
 
 
     //general funcs
+    static void LoadData(std::string general);
     static void StartGame(int state,std::string name1 , std::string name2);
+    static std::vector<std::string> getSavedGames();
     static bool SaveGame();
     static bool Load();
 

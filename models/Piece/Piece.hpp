@@ -6,10 +6,16 @@ class Piece
 private:
     bool Black;
 public:
+
+    static char BlackSymbol;
+    static char WhiteSymbol;
+    static char EmptySymbol;
+
     Piece(bool Black);
     bool IsBlack();
     void Convert();
-    void Draw();
+
+    static void Draw(Piece* piece);
 };
 
 #endif
