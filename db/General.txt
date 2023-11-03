@@ -1,11 +1,11 @@
 B
 W
-end PieceSymbols
+} PieceSymbols
 initialMaps/1.txt
 initialMaps/2.txt
 initialMaps/3.txt
 initialMaps/4.txt
 initialMaps/5.txt
-end initialMaps
+} initialMaps
 Saves/address.txt
-end Saves
+} Saves

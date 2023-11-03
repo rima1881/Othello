@@ -13,30 +13,31 @@ void Game::LoadData(std::string general){
 
     std::ifstream reader(general);
 
-    int mode;
+    int mode = 0;
     std::string line;
 
-    reader >> line;
-
+    std::getline(reader,line);
     Piece::BlackSymbol = line[0];
 
-    reader >> line;
-
+    std::getline(reader, line);
     Piece::WhiteSymbol = line[0];
+
 
     //I kinda don't like the way I implymented this function but I don't wanna deal with it so it is what it is
     while (true)
     {
 
-        reader >> line;
+        std::getline(reader,line);
+        
+        if(mode != 1 && mode != 2 && mode != 0)
+            break;
 
-        if(line == "end"){
+
+        if(line[0] == '}'){
             mode++;
-            reader.ignore();
             continue;
         }
-
-        reader >> line;
+        
 
         if(mode == 1){
             initialMaps.push_back(line);
@@ -44,8 +45,6 @@ void Game::LoadData(std::string general){
         else if(mode == 2){
             savedGames.push_back(line);
         }
-        else if(mode == 3)
-            break;
 
     }
     

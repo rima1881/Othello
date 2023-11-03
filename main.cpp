@@ -11,6 +11,7 @@ int main(){
     std::cout<< "Welcome to Game :)\n";
     std::cout<<"********************************************\n";
 
+    Game::LoadData("db/General.txt");
     
     std::cout<<"availblale operations :\n\n";
 
@@ -51,7 +52,11 @@ int main(){
 
 void StartGame(){
 
+    int initialMapsNum = Game::initialMaps.size();
+
     
+
+
     std::string name1,name2;
     std::cout << "\nplease enter player1 name: ";
     std::cin >> name1;
