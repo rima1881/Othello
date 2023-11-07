@@ -29,7 +29,7 @@ class Game
 {
 private:
 
-    static void render();
+    static bool blackTurn;
 
         //I don't like them being static but I didn't want to think :)
     static std::vector<std::string> savedGames;
@@ -51,6 +51,7 @@ public:
     static Board* board;
 
     //onGame funcs
+    static void render();
     static void TakeTurn();
     static bool CheckMove();
     static bool EndingMove();
@@ -63,7 +64,6 @@ public:
     static bool SaveGame();
     static bool LoadFile(std::string address);
     static int getInitialMapsSize();
-
 
 
     static void FinalMSG(bool winner);

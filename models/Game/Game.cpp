@@ -9,9 +9,15 @@ Board* Game::board;
 
 std::vector<std::string> Game::initialMaps;
 std::vector<std::string> Game::savedGames;
+bool Game::blackTurn = false;
+
 
 int Game::getInitialMapsSize(){
     return Game::initialMaps.size();
+}
+
+std::vector<std::string> Game::getSavedGames(){
+    return savedGames;
 }
 
 
@@ -63,15 +69,27 @@ void Game::StartGame(int state,std::string name1,std::string name2){
     state--;
     std::string mapAddress = Game::initialMaps[state];
 
-    Game::Player1 = new Player(name1);
-    Game::Player2 = new Player(name2);
+    Game::Player1 = new Player(name1, false);
+    Game::Player2 = new Player(name2, true);
 
     Game::LoadFile(mapAddress);
 
-    Game::render();
 }
 
+void Game::TakeTurn(){
 
+    Game::board -> ModifyBoard(blackTurn);
+
+
+    if(blackTurn)
+        Player2 -> takeTurn();
+    else
+        Player1 -> takeTurn();
+
+
+    blackTurn = !blackTurn;
+
+}
 
 
 bool Game::LoadFile(std::string address){
@@ -115,9 +133,5 @@ void Game::render(){
     std::cout << "\n\n";
     Game::board -> Draw();
 
-    int randomMF;
-
-    std::cin >> randomMF;
-    std::cin >> randomMF;
 
 }

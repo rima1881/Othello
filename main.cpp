@@ -15,35 +15,41 @@ int main(){
     
     std::cout<<"availblale operations :\n\n";
 
-    while(true){
-
-    std::cout<<"1)Start a new Game\n";;
-    std::cout<<"2)Load a Game\n";
-    std::cout<<"3)Exit\n";
-
-    std::cout<<"enter operation number: ";
     int option = 0;
-    std::cin >> option;
 
-    if(option == 3)
-        break;
+    while(option < 1 || option > 3){
 
-    switch (option)
-    {
-        case 1:
-            StartGame();
+        std::cout<<"1)Start a new Game\n";;
+        std::cout<<"2)Load a Game\n";
+        std::cout<<"3)Exit\n";
+
+        std::cout<<"enter operation number: ";
+        std::cin >> option;
+
+        if(option == 3)
             break;
-        case 2:
-            LoadGame();
-            break;
-        default:
-            std::cout << "incorrect number\n";
-            break;
+
+        switch (option)
+        {
+            case 1:
+                StartGame();
+                break;
+            case 2:
+                LoadGame();
+                break;
+            default:
+                std::cout << "incorrect number\n";
+                break;
         }
 
     }
 
 
+    while (true)
+    {
+        Game::render();
+        Game::TakeTurn();
+    }
     
 
 

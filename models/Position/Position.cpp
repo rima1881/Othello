@@ -45,3 +45,7 @@ void Position::ConvertPiece(){
 bool Position::playable(){
     return false;
 }
+
+Piece* Position::getContent(){
+    return data;
+}

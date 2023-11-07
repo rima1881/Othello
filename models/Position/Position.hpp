@@ -21,6 +21,7 @@ public:
 
     int getX();
     int getY();
+    Piece* getContent();
     void Draw();
     
 };
