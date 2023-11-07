@@ -2,25 +2,24 @@
 #include <iostream>
 #include "../PlayablePosition/PlayablePosition.hpp"
 
-Board::Board(int state){
-    this -> map = new Position**[8];
+Board::Board(){
 
-    for(int i=0;i<8;i++) {
-        this -> map[i] = new Position*[8];
-        for(int j = 0;j < 8 ; j++) {
-            this -> map[i][j] = new Position();
-        }
+    for(int i=0;i < 8;i++){
+        std::vector<Position *> row;
+
+        for(int j=0; j < 8; j++)
+            row.push_back(nullptr);
+
+        this->data.push_back(row);
     }
+
 
 }
 
 Board::Board(const Board &b){
-    this -> map = b.map;
+    this -> data = b.data;
 }
 
-Position*** Board::getMap(){
-    return this -> map;
-}
 
 void Board::Draw(){
 
@@ -30,12 +29,21 @@ void Board::Draw(){
 
         std::cout << "|";
         for(int j=0;j<8;j++){
-            map[i][j] -> Draw();
+            data[i][j] -> Draw();
             std::cout << "|";
         }
 
         std::cout <<"\n-----------------\n";
     }
+}
+
+
+
+
+std::vector<Position *>& Board::operator[](int index){
+
+    return data[index];
+
 }
 
 /*

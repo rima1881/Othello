@@ -1,4 +1,5 @@
 #include "./Game.hpp"
+#include<windows.h>
 #include <iostream>
 #include <fstream>
 #include "../Piece/Piece.hpp"
@@ -8,6 +9,11 @@ Board* Game::board;
 
 std::vector<std::string> Game::initialMaps;
 std::vector<std::string> Game::savedGames;
+
+int Game::getInitialMapsSize(){
+    return Game::initialMaps.size();
+}
+
 
 void Game::LoadData(std::string general){
 
@@ -53,18 +59,50 @@ void Game::LoadData(std::string general){
 
 
 void Game::StartGame(int state,std::string name1,std::string name2){
+
+    state--;
+    std::string mapAddress = Game::initialMaps[state];
+
     Game::Player1 = new Player(name1);
     Game::Player2 = new Player(name2);
-    Game::board = new Board(state);
+
+    Game::LoadFile(mapAddress);
 
     Game::render();
 }
 
-bool Game::Load(){
-    Game::Player1 = new Player("fuck1");
-    Game::Player2 = new Player("fuck2");
-    Game::board = new Board(69);
-    return false;
+
+
+
+bool Game::LoadFile(std::string address){
+
+
+    std::ifstream reader( "db/" +address);
+    std::string line;
+    Game::board = new Board();
+
+    int size = 0;
+
+    for(int i=0;i<8;i++){
+        std::getline(reader,line);
+
+        size = line.length();
+        for(int j=0;j<size;j++){
+
+            if(line[j] == '.'){
+                (*board)[i][j] = new Position();
+            }
+            else if(line[j] == 'B')
+                (*board)[i][j] = new Position(new Piece(true));
+            else if(line[j] == 'W')
+                (*board)[i][j] = new Position(new Piece(false));
+            else
+                throw 12;
+        }
+
+    }
+
+    return true;
 }
 
 bool Game::SaveGame(){
@@ -73,6 +111,8 @@ bool Game::SaveGame(){
 
 void Game::render(){
 
+    system("cls");
+    std::cout << "\n\n";
     Game::board -> Draw();
 
     int randomMF;

@@ -20,7 +20,7 @@ bool Piece::IsBlack(){
 }
 
 void Piece::Draw(Piece* piece){
-    
+
     if(piece == nullptr)
         std::cout << Piece::EmptySymbol;
     else if(piece -> IsBlack())

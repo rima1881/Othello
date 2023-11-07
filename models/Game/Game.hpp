@@ -61,7 +61,9 @@ public:
     static void StartGame(int state,std::string name1 , std::string name2);
     static std::vector<std::string> getSavedGames();
     static bool SaveGame();
-    static bool Load();
+    static bool LoadFile(std::string address);
+    static int getInitialMapsSize();
+
 
 
     static void FinalMSG(bool winner);

@@ -1,17 +1,19 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "../Position/Position.hpp"
-
+#include <vector>
 
 class Board
 {
 private:
-    Position*** map;
+    std::vector<std::vector<Position*>> data;
+
 public:
-    Board(int state);
+    Board();
     Board(const Board &b);
     void Draw();
-    Position*** getMap();
+    std::vector<Position *>& operator[](int);
+
 };
 
 #endif

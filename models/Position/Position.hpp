@@ -6,7 +6,7 @@ class Position
 {
 private:
 
-    Piece* content;
+    Piece* data;
     int x;
     int y;
 
@@ -19,7 +19,6 @@ public:
     virtual void setContent(Piece*);
     virtual void ConvertPiece();
 
-    Piece* getContent();
     int getX();
     int getY();
     void Draw();

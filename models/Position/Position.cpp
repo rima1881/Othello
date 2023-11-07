@@ -3,16 +3,14 @@
 #include "../Error/Error.hpp"
 
 Position::Position(){
-    this -> content = nullptr;
+    this -> data = nullptr;
+
 }
 
 Position::Position(Piece* content){
-    this -> content = content;
+    this -> data = content;
 }
 
-Piece* Position::getContent(){
-    return content;
-}
 
 //has to be fixed *************************************
 void Position::setContent(Piece* content){
@@ -28,18 +26,19 @@ int Position::getY(){
 void Position::Draw(){
 
     //the reasoning behind this implymention is explained in piece.hpp file
-    Piece::Draw(content);
+    Piece::Draw(data);
+
 
 }
 
 void Position::ConvertPiece(){
 
-    if(content == nullptr){
+    if(data == nullptr){
         throw 12;
     }
 
 
-    content -> Convert();
+    data -> Convert();
 
 }
 

@@ -52,7 +52,7 @@ int main(){
 
 void StartGame(){
 
-    int initialMapsNum = Game::initialMaps.size();
+    int initialMapsNum = Game::getInitialMapsSize();
 
     
 
@@ -63,8 +63,20 @@ void StartGame(){
     std::cout << "\nplease enter player2 name: ";
     std::cin >> name2;
 
+    int option = 0;
+    while (true)
+    {
+        std::cout << "\nplease choose the initial map layout (1 - " << initialMapsNum << " ):";
+        std::cin >> option;
+        if(option <= initialMapsNum && option > 0)
+            break;
+        std::cout << "\nplease don't be an asshole and write a correct number MF\n";
+    }
+    
 
-    Game::StartGame(69,name1,name2);
+
+
+    Game::StartGame(option,name1,name2);
 
 }
 
