@@ -66,7 +66,7 @@ public:
     static int getInitialMapsSize();
 
 
-    static void FinalMSG(bool winner);
+    static void FinalMSG();
 
 };
 

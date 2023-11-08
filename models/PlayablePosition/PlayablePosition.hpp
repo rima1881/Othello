@@ -9,7 +9,6 @@ private:
     Piece* content;
 public:
     PlayablePosition();
-    PlayablePosition(Piece* content);
 
     virtual bool playable();
     virtual void setContent(Piece*);
