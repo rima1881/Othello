@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include "../Player/Player.hpp"
+#include "../BoardModifier/BoardModifier.hpp"
 #include "../Board/Board.hpp"
 #include <vector>
 
@@ -35,6 +36,25 @@ private:
     static std::vector<std::string> savedGames;
     static std::vector<std::string> initialMaps;
 
+    static BoardModifier* BM;
+    
+    static Player* Player1;
+    static Player* Player2;
+    static Board* board;
+
+    //Managing functions
+    static void initialization();
+    static void modifyBoard();
+    static bool loadMap(std::string address);
+    static bool saveGame();
+
+
+
+    //onGame funcs
+    static void render();
+    static void takeTurn();
+    static bool endingMove();
+
 public:
 
     /*
@@ -46,27 +66,19 @@ public:
 
         they will be initialised during load or start
     */
-    static Player* Player1;
-    static Player* Player2;
-    static Board* board;
 
-    //onGame funcs
-    static void render();
-    static void TakeTurn();
-    static bool CheckMove();
-    static bool EndingMove();
-
-
-    //general funcs
+    //General functions
     static void LoadData(std::string general);
-    static void StartGame(int state,std::string name1 , std::string name2);
+    static void Start();
+    static void Run();
+    static void FinalMSG();
+
+
+    //Getters
     static std::vector<std::string> getSavedGames();
-    static bool SaveGame();
-    static bool LoadFile(std::string address);
     static int getInitialMapsSize();
 
 
-    static void FinalMSG();
 
 };
 

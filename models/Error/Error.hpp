@@ -2,10 +2,12 @@
 class Error
 {
 private:
-    std::string msg;
+    static std::string errorMessages[2];
+    int code;
 public:
 
-    Error(std::string msg);
+    Error(int);
     std::string getMsg();
+    int getCode();
 
 };
