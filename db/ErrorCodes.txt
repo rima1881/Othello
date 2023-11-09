@@ -1,0 +1,2 @@
+1   "Error!!!Game attended to put a piece in a position that wasn't suppose to put. please restart the game"
+2   "Error!!!:settings file was not found.\n To unlock the game fully please download the db folder from github"

@@ -26,8 +26,12 @@ int Position::getY(){
 void Position::Draw(){
 
     //the reasoning behind this implymention is explained in piece.hpp file
-    Piece::Draw(data);
-
+    if(data == nullptr)
+        std::cout << Piece::EmptySymbol;
+    else if(data -> IsBlack())
+        std::cout << Piece::BlackSymbol;
+    else
+        std::cout << Piece::WhiteSymbol;
 
 }
 

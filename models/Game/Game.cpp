@@ -64,7 +64,7 @@ void Game::LoadData(std::string general){
 }
 
 
-void Game::StartGame(int state,std::string name1,std::string name2){
+void Game::initialization(int state,std::string name1,std::string name2){
 
     state--;
     std::string mapAddress = Game::initialMaps[state];
@@ -72,13 +72,13 @@ void Game::StartGame(int state,std::string name1,std::string name2){
     Game::Player1 = new Player(name1, false);
     Game::Player2 = new Player(name2, true);
 
-    Game::LoadFile(mapAddress);
+    Game::loadMap(mapAddress);
 
 }
 
-void Game::TakeTurn(){
+void Game::takeTurn(){
 
-    Game::board -> ModifyBoard(blackTurn);
+    //Game::board -> ModifyBoard(blackTurn);
 
 
     if(blackTurn)
@@ -92,7 +92,7 @@ void Game::TakeTurn(){
 }
 
 
-bool Game::LoadFile(std::string address){
+bool Game::loadMap(std::string address){
 
 
     std::ifstream reader( "db/" +address);
@@ -123,7 +123,7 @@ bool Game::LoadFile(std::string address){
     return true;
 }
 
-bool Game::SaveGame(){
+bool Game::saveGame(){
     return false;
 }
 
@@ -133,5 +133,14 @@ void Game::render(){
     std::cout << "\n\n";
     Game::board -> Draw();
 
+}
+
+void Game::Start(){
+
+
+    do{
+
+    }while (true);
+    
 
 }

@@ -43,7 +43,7 @@ private:
     static Board* board;
 
     //Managing functions
-    static void initialization();
+    static void initialization(int state,std::string name1,std::string name2);
     static void modifyBoard();
     static bool loadMap(std::string address);
     static bool saveGame();

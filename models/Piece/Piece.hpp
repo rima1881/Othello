@@ -15,8 +15,6 @@ public:
     bool IsBlack();
     void Convert();
 
-    //it is declared as static because there are some null pieces and instead of multiple if's or having draw 
-    static void Draw(Piece* piece);
 };
 
 #endif

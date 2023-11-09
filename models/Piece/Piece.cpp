@@ -18,14 +18,3 @@ void Piece::Convert(){
 bool Piece::IsBlack(){
     return this -> Black;
 }
-
-void Piece::Draw(Piece* piece){
-
-    if(piece == nullptr)
-        std::cout << Piece::EmptySymbol;
-    else if(piece -> IsBlack())
-        std::cout << Piece::BlackSymbol;
-    else
-        std::cout << Piece::WhiteSymbol;
-
-}
