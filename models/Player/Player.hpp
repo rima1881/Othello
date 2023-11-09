@@ -5,8 +5,10 @@
 class Player
 {
 private:
+
     std::string name;
     bool isBlack;
+
 public:
 
     Player(std::string name,bool is_black);

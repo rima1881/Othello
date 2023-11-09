@@ -138,9 +138,24 @@ void Game::render(){
 void Game::Start(){
 
 
+    std::cout << "***********************************************";
+    std::cout << "welcome to the Game:)";
+    std::cout << "***********************************************";
+
+
+    Game::initialization(1,"amir","reza");
+    
+
+}
+
+void Game::Run(){
+
+    
     do{
 
-    }while (true);
-    
+        Game::render();
+        Game::takeTurn();
+
+    }while (Game::endingMove());
 
 }
