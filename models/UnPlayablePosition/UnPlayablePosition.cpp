@@ -1,7 +1,10 @@
 #include "./UnPlayablePosition.hpp"
 
 
-UnPlayablePosition::UnPlayablePosition(){ }
+UnPlayablePosition::UnPlayablePosition(Coordinate data) : co(data)
+{ 
+
+}
 
 //***********************************************
 void UnPlayablePosition::ConvertPiece(){
@@ -22,5 +25,9 @@ Piece* UnPlayablePosition::getContent(){
 }
 
 void UnPlayablePosition::Draw(){
-    std::cout << " ";
-}  
+    std::cout << "*";
+}
+
+Coordinate UnPlayablePosition::getCoordinate(){
+    return this -> co;
+}

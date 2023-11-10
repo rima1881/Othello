@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include <string>
+#include <vector>
+#include "../Coordinate/Coordinate.hpp"
 class Player
 {
 private:
@@ -15,7 +17,7 @@ public:
     std::string Color();
     bool IsBlack();
     std::string getName();
-    void takeTurn();
+    Coordinate takeTurn(std::vector<Coordinate> availablePositions);
     
 };
 

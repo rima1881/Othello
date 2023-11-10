@@ -23,10 +23,10 @@ std::ostream& operator<<(std::ostream& os, const Piece& p){
     switch (p.color)
     {
     case Color::Black:
-        os << "B";
+        os << 'B';
         return os;
     case Color::White:
-        os << "W";
+        os << 'W';
         return os;
     }
 

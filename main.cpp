@@ -11,8 +11,10 @@ int main(){
         std::cout << err.getMsg();
     }
 
+
     Game::Start();
     Game::Run();
+
     Game::FinalMSG();
 
     return 0;

@@ -3,123 +3,82 @@
 #include <iostream>
 #include <fstream>
 #include "../Piece/Piece.hpp"
+#include "../UnPlayablePosition/UnPlayablePosition.hpp"
+
+
 Player* Game::Player1;
 Player* Game::Player2;
 Board* Game::board;
-
-std::vector<std::string> Game::initialMaps;
-std::vector<std::string> Game::savedGames;
+int Game::initialMapsNumber = 1;
+std::string Game::savedGamesFileAddress = "";
 bool Game::blackTurn = false;
 
 
-int Game::getInitialMapsSize(){
-    return Game::initialMaps.size();
-}
 
-std::vector<std::string> Game::getSavedGames(){
-    return savedGames;
-}
 
-//**************************************************************
+//This function loads the defaults of the program
+/*
+
+In order for program to work Fully this function
+need a txt file located in DB folder. if the txt
+file does not exist the game will continue with
+minimal options.
+
+if the txt file is some how removed the program
+gives a link to user to download it manually
+
+*/
 void Game::LoadData(std::string general){
 
     std::ifstream reader(general);
 
-    int mode = 0;
+    //get the firstline will in general txt is an address to a file for all saved games
+    std::getline(reader,savedGamesFileAddress);
+
+    //the next line will be the number of default maps
+    /*
+        the resone for this way of implymention was to give the user the power
+        to customize it's initial maps and number of them
+    */ 
+   
     std::string line;
-
-
-    //I kinda don't like the way I implymented this function but I don't wanna deal with it so it is what it is
-    while (true)
-    {
-
-        std::getline(reader,line);
-        
-        if(mode != 1 && mode != 2 && mode != 0)
-            break;
-
-
-        if(line[0] == '}'){
-            mode++;
-            continue;
-        }
-        
-
-        if(mode == 1){
-            initialMaps.push_back(line);
-        }
-        else if(mode == 2){
-            savedGames.push_back(line);
-        }
-
-    }
-    
+    std::getline(reader,line);
+    initialMapsNumber = stoi(line);
 
 }
 
 
-void Game::initialization(int state,std::string name1,std::string name2){
+void Game::newGame(int state,std::string name1,std::string name2){
 
-    state--;
-    std::string mapAddress = Game::initialMaps[state];
+    std::string mapAddress = "initialMaps/" + std::to_string(state) + ".txt";
 
     Game::Player1 = new Player(name1, false);
     Game::Player2 = new Player(name2, true);
 
     Game::board = new Board();
 
-    //Game::loadMap(mapAddress);
+    Game::loadMap(mapAddress);
 
 }
 
 
-void Game::interact(){
-
-    //Game::board -> ModifyBoard(blackTurn);
 
 
-    if(blackTurn)
-        Player2 -> takeTurn();
-    else
-        Player1 -> takeTurn();
 
 
-    blackTurn = !blackTurn;
-
-}
-
-/*
-bool Game::loadMap(std::string address){
+void Game::loadMap(std::string address){
 
 
     std::ifstream reader( "db/" +address);
-    std::string line;
-    Game::board = new Board();
+    std::array<std::string,8> lines;
 
-    int size = 0;
+    for(int i=0;i<8;i++)
+        std::getline(reader,lines[i]);
 
-    for(int i=0;i<8;i++){
-        std::getline(reader,line);
 
-        size = line.length();
-        for(int j=0;j<size;j++){
-
-            if(line[j] == '.'){
-                (*board)[i][j] = new Position();
-            }
-            else if(line[j] == 'B')
-                (*board)[i][j] = new Position(new Piece(true));
-            else if(line[j] == 'W')
-                (*board)[i][j] = new Position(new Piece(false));
-            else
-                throw 12;
-        }
-
-    }
-
-    return true;
+    Game::board = new Board(lines);
 }
-*/
+
 
 
 bool Game::saveGame(){
@@ -137,20 +96,33 @@ void Game::render(){
 void Game::Start(){
 
 
-    std::cout << "***********************************************";
-    std::cout << "welcome to the Game:)";
-    std::cout << "***********************************************";
+    std::cout << "\n\n***********************************************\n";
+    std::cout << "welcome to the Game:)\n";
+    std::cout << "***********************************************\n\n";
 
 
-    Game::initialization(1,"amir","reza");
+    Game::newGame(1,"amir","reza");
     
 
 }
 
 void Game::Run(){
 
+    while(true){
+
+
+        Game::board -> Refresh(blackTurn ? Color::Black : Color::White);
+
+        Game::render();
+
+        if(blackTurn)
+            Player2 -> takeTurn(Game::board -> getAvailableCoordinate());
+        else
+            Player1 -> takeTurn(Game::board -> getAvailableCoordinate());
+
+        blackTurn = !blackTurn;
+    }
     
-    Game::render();
 
 }
 

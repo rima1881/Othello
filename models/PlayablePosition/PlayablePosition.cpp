@@ -1,7 +1,7 @@
 #include "./PlayablePosition.hpp"
 #include <iostream>
 
-PlayablePosition::PlayablePosition(){
+PlayablePosition::PlayablePosition(Coordinate data) : co(data) {
 
 }
 
@@ -24,4 +24,8 @@ Piece* PlayablePosition::getContent(){
 
 void PlayablePosition::Draw(){
     std::cout << " ";
+}
+
+Coordinate PlayablePosition::getCoordinate(){
+    return this -> co;
 }

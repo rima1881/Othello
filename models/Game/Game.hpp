@@ -33,8 +33,8 @@ private:
     static bool blackTurn;
 
         //I don't like them being static but I didn't want to think :)
-    static std::vector<std::string> savedGames;
-    static std::vector<std::string> initialMaps;
+    static std::string savedGamesFileAddress;
+    static int initialMapsNumber;
 
    // static BoardModifier* BM;
     
@@ -43,16 +43,13 @@ private:
     static Board* board;
 
     //Managing functions
-    static void initialization(int state,std::string name1,std::string name2);
-    static void modifyBoard();
-    static bool loadMap(std::string address);
+    static void newGame(int state,std::string name1,std::string name2);
+    static void loadMap(std::string address);
     static bool saveGame();
-
 
 
     //onGame funcs
     static void render();
-    static void interact();
     //static bool endingMove();
 
 public:
@@ -75,8 +72,6 @@ public:
 
 
     //Getters
-    static std::vector<std::string> getSavedGames();
-    static int getInitialMapsSize();
 
 
 

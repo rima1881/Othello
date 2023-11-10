@@ -1,7 +1,7 @@
 #include "./FilledPosition.hpp"
 
 
-FilledPosition::FilledPosition(Piece* p){
+FilledPosition::FilledPosition(Piece* p,Coordinate data) : co(data){
     this -> piece = p;
 }
 
@@ -19,5 +19,9 @@ Piece* FilledPosition::getContent(){
     return this -> piece;
 }
 void FilledPosition::Draw(){
-    std::cout << piece;
+    std::cout << *piece;
+}
+
+Coordinate FilledPosition::getCoordinate(){
+    return co;
 }

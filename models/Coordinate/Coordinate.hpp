@@ -1,3 +1,6 @@
+#ifndef COORDINATE_H
+#define COORDINATE_H
+
 class Coordinate
 {
 private:
@@ -15,3 +18,5 @@ public:
     Coordinate(int,int);
 };
 
+
+#endif

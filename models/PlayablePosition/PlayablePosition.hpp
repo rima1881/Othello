@@ -3,13 +3,16 @@
 #include "../Interfaces/IPosition.hpp"
 class PlayablePosition : public IPosition
 {
+private:
+    Coordinate co;
 public:
 
-    PlayablePosition();
+    PlayablePosition(Coordinate);
     bool playable();
     bool isEmpty();
     void ConvertPiece();
     Piece* getContent();
+    Coordinate getCoordinate();
     void Draw();  
 };
 

@@ -1,6 +1,6 @@
 #include "Border.hpp"
 
-Border::Border(){ }
+Border::Border(Coordinate data) : UnPlayablePosition(data) { }
 
 
 void Border::Draw() {

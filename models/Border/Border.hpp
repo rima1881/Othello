@@ -5,7 +5,7 @@
 class Border : public UnPlayablePosition
 {
 public:
-    Border();
+    Border(Coordinate);
     void Draw();
 };
 
