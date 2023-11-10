@@ -13,6 +13,7 @@ private:
     int endGame;
 
     std::string savedGamesFileAddress;
+    std::vector<std::string> saveLists;
     int initialMapsNumber;
     
     Player* Player1;
@@ -21,6 +22,9 @@ private:
 
     //Managing functions
     void newGame(int state,std::string name1,std::string name2);
+    bool load();
+    void loadGame(std::string address);
+    bool loadSaves();
     void loadMap(std::string address);
     bool saveGame();
 
@@ -36,7 +40,7 @@ public:
 
     //General functions
     void LoadData(std::string general);
-    void Start();
+    bool Menu();
     void Run();
     void FinalMSG();
 

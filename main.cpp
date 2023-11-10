@@ -13,12 +13,13 @@ int main(){
         std::cout << err.getMsg();
     }
 
-
-    game.Start();
-    game.Run();
-
+    while (game.Menu())
+    {
+        game.Run();
+        game.FinalMSG();
+    }
     
-    game.FinalMSG();
+
 
     return 0;
 }

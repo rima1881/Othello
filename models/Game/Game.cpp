@@ -51,12 +51,12 @@ void Game::newGame(int state,std::string name1,std::string name2){
 
     std::string mapAddress = "initialMaps/" + std::to_string(state) + ".txt";
 
-    Game::Player1 = new Player(name1, false);
-    Game::Player2 = new Player(name2, true);
+    Player1 = new Player(name1, false);
+    Player2 = new Player(name2, true);
 
-    Game::board = new Board();
+    board = new Board();
 
-    Game::loadMap(mapAddress);
+    loadMap(mapAddress);
 
 }
 
@@ -92,16 +92,154 @@ void Game::render(){
 
 }
 
-void Game::Start(){
+bool Game::Menu(){
 
 
     std::cout << "\n\n***********************************************\n";
     std::cout << "welcome to the Game:)\n";
     std::cout << "***********************************************\n\n";
 
+    int option = 0;
+    std::cout << std::endl;
 
-    Game::newGame(1,"amir","reza");
+
+    while(true) {
+        std::cout << std::endl;
+
+
+        std::cout << "1.New Game\n";
+        std::cout << "2.Load\n";
+        std::cout << "3.Exit\n\n";
+
+        std::cout << "Please Choose from one of the options above :";
+
+
+        std::cin >> option;
+
+        if (option == 1){
+            std::cout << std::endl;
+            std::cout << "Please Enter Player1 name:";
+            std::string name1 ,name2;
+            std::cin >> name1;
+            std::cout << "Please Enter Player2 name:";
+            std::cin >> name2;
+            int state;
+
+            while (true)
+            {
+                std::cout << std::endl;
+                std::cout << "Please Choose a number from 1 to " << this -> initialMapsNumber << " for initial Map:";
+                std::cin >> state;
+
+                if(state > 0 && state <= initialMapsNumber)
+                    break;
+
+                std::cout<< "Incorrect Number!!!";
+            }
+
+
+            newGame(state,name1,name2);
+
+
+            break;
+        }
+        else if(option == 2){
+            if(load())
+                break;
+            else
+                continue;
+        }
+        else if(option == 3)
+            return false;
+
+        std::cout << "InCorrect Number!!!Please Choose between 1-3\n";
+
+    }
+
+
+    return true;
     
+
+}
+
+bool Game::loadSaves(){
+
+    if(saveLists.size() == 0){
+    std::ifstream reader( "db/" + savedGamesFileAddress);
+    std::string line;
+
+    while(std::getline(reader,line))
+        saveLists.push_back(line);
+    }
+
+    if(saveLists.size() == 0)
+        return false;
+
+    return true;
+}
+
+
+bool Game::load(){
+
+    if(!loadSaves()){
+        std::cout << "\nThere is no saved file!!!";
+        return false;
+    }
+
+    int choose;
+    bool begone = false;
+
+    while(!begone){
+
+        std::cout << "\n" << "to Go back to menu enter -1" << "\n";
+        std::cout << "please choose between Saves:" << "\n\n";
+
+        for(int i=0;i < saveLists.size();i++){
+            std::cout << i+1 << ") " <<saveLists[i] << std::endl;
+        }
+
+        std::cin.ignore();
+        std::cin >> choose;
+
+        if(choose == -1)
+            return false;
+
+        if(choose > 0 && choose <= saveLists.size())
+            break;
+
+        std::cout << "Incorrent Input!!!" << "\n";
+
+    }
+
+    loadGame(saveLists[choose-1]);
+
+    return true;
+
+}
+
+void Game::loadGame(std::string address){
+
+    address = "db/Saves/" + address + ".txt";
+    std::ifstream reader(address);
+
+
+    std::array<std::string,8> lines;
+
+    for(int i=0;i<8;i++){
+        std::getline(reader , lines[i]);
+        std::cout << lines[i] << "\n";
+    }
+
+    std::string name1,name2;
+    std::getline(reader,name1);
+    std::getline(reader,name2);
+
+    Player1 = new Player(name1, false);
+    Player2 = new Player(name2, true);
+
+    this -> board = new Board(lines);
+
+
 
 }
 
