@@ -19,7 +19,6 @@ public:
     void Draw();  
 
 
-    ~FilledPosition();
 
 };
 

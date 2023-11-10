@@ -1,6 +1,7 @@
 #ifndef PIECE_H
 #define PIECE_H
 #include "../Color/Color.hpp"
+#include <iostream>
 
 class Piece
 {
@@ -10,8 +11,10 @@ public:
 
     Piece(Color Black);
     Piece(Piece &p);
-    void Draw();
     void Convert();
+
+    friend std::ostream& operator<<(std::ostream& os, const Piece& p);
+
 
 };
 

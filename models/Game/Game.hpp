@@ -52,7 +52,7 @@ private:
 
     //onGame funcs
     static void render();
-    static void takeTurn();
+    static void interact();
     //static bool endingMove();
 
 public:
@@ -68,7 +68,7 @@ public:
     */
 
     //General functions
-   // static void LoadData(std::string general);
+    static void LoadData(std::string general);
     static void Start();
     static void Run();
     static void FinalMSG();

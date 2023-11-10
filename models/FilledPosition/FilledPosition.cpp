@@ -19,5 +19,5 @@ Piece* FilledPosition::getContent(){
     return this -> piece;
 }
 void FilledPosition::Draw(){
-    this -> Draw();
+    std::cout << piece;
 }

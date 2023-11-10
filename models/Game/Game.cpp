@@ -20,19 +20,13 @@ std::vector<std::string> Game::getSavedGames(){
     return savedGames;
 }
 
-/*
+//**************************************************************
 void Game::LoadData(std::string general){
 
     std::ifstream reader(general);
 
     int mode = 0;
     std::string line;
-
-    std::getline(reader,line);
-    Piece::BlackSymbol = line[0];
-
-    std::getline(reader, line);
-    Piece::WhiteSymbol = line[0];
 
 
     //I kinda don't like the way I implymented this function but I don't wanna deal with it so it is what it is
@@ -62,7 +56,8 @@ void Game::LoadData(std::string general){
     
 
 }
-*/
+
+
 void Game::initialization(int state,std::string name1,std::string name2){
 
     state--;
@@ -78,7 +73,7 @@ void Game::initialization(int state,std::string name1,std::string name2){
 }
 
 
-void Game::takeTurn(){
+void Game::interact(){
 
     //Game::board -> ModifyBoard(blackTurn);
 

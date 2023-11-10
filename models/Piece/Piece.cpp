@@ -2,13 +2,34 @@
 #include <iostream>
 
 
-Piece::Piece(Color color){
-    this -> color = color;
-}
+Piece::Piece(Color color):color(color){ }
+
 void Piece::Convert(){
-    this -> color = !color;
+    switch (color)
+    {
+    case Color::Black:
+        color = Color::White;
+        break;
+    
+    case Color::White:
+        color = Color::Black;
+        break;
+    }
 }
 
-void Piece::Draw(){
-    std::cout << color;
+
+std::ostream& operator<<(std::ostream& os, const Piece& p){
+
+    switch (p.color)
+    {
+    case Color::Black:
+        os << "B";
+        return os;
+    case Color::White:
+        os << "W";
+        return os;
+    }
+
+    return os;
+
 }

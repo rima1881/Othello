@@ -30,13 +30,6 @@ void Player::takeTurn(){
 
     while (true)
     {
-        std::cout << "\n" << this -> name << ": ";
-        std::cin >> i >> j;
-
-        if((*Game::board)[i][j] -> playable()){
-            (*Game::board)[i][j] = new Position(new Piece(isBlack));
-            break;  
-        } 
 
         std::cout << "can not place there !!!";
     }
