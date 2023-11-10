@@ -3,6 +3,7 @@ class Coordinate
 private:
     int i;
     int j;
+
 public:
 
     void setI(int);
@@ -12,6 +13,5 @@ public:
     int getJ();
 
     Coordinate(int,int);
-    Coordinate();
 };
 

@@ -36,7 +36,7 @@ private:
     static std::vector<std::string> savedGames;
     static std::vector<std::string> initialMaps;
 
-    static BoardModifier* BM;
+   // static BoardModifier* BM;
     
     static Player* Player1;
     static Player* Player2;
@@ -53,7 +53,7 @@ private:
     //onGame funcs
     static void render();
     static void takeTurn();
-    static bool endingMove();
+    //static bool endingMove();
 
 public:
 
@@ -68,7 +68,7 @@ public:
     */
 
     //General functions
-    static void LoadData(std::string general);
+   // static void LoadData(std::string general);
     static void Start();
     static void Run();
     static void FinalMSG();

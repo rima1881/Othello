@@ -20,7 +20,7 @@ std::vector<std::string> Game::getSavedGames(){
     return savedGames;
 }
 
-
+/*
 void Game::LoadData(std::string general){
 
     std::ifstream reader(general);
@@ -62,8 +62,7 @@ void Game::LoadData(std::string general){
     
 
 }
-
-
+*/
 void Game::initialization(int state,std::string name1,std::string name2){
 
     state--;
@@ -72,9 +71,12 @@ void Game::initialization(int state,std::string name1,std::string name2){
     Game::Player1 = new Player(name1, false);
     Game::Player2 = new Player(name2, true);
 
-    Game::loadMap(mapAddress);
+    Game::board = new Board();
+
+    //Game::loadMap(mapAddress);
 
 }
+
 
 void Game::takeTurn(){
 
@@ -91,7 +93,7 @@ void Game::takeTurn(){
 
 }
 
-
+/*
 bool Game::loadMap(std::string address){
 
 
@@ -122,6 +124,8 @@ bool Game::loadMap(std::string address){
 
     return true;
 }
+*/
+
 
 bool Game::saveGame(){
     return false;
@@ -151,11 +155,11 @@ void Game::Start(){
 void Game::Run(){
 
     
-    do{
+    Game::render();
 
-        Game::render();
-        Game::takeTurn();
+}
 
-    }while (Game::endingMove());
+
+void Game::FinalMSG(){
 
 }

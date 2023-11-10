@@ -2,13 +2,26 @@
 #include <iostream>
 
 PlayablePosition::PlayablePosition(){
-    this -> content = nullptr;
+
 }
 
 bool PlayablePosition::playable(){
-    return nullptr == content;
+    return true;
 }
 
-void PlayablePosition::setContent(Piece* content){
-    this -> content = content;
+bool PlayablePosition::isEmpty(){
+    return true;
+}
+
+//*************************
+void PlayablePosition::ConvertPiece(){
+    throw 12;
+}
+
+Piece* PlayablePosition::getContent(){
+    return nullptr;
+}
+
+void PlayablePosition::Draw(){
+    std::cout << " ";
 }

@@ -21,6 +21,3 @@ void Coordinate::setJ(int j){
     this -> j = j;
 }
 
-Coordinate::Coordinate(){
-    
-}

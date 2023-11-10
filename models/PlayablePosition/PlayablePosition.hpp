@@ -1,17 +1,16 @@
 #ifndef PSQUARE_H
 #define PSQUARE_H
-#include "../Piece/Piece.hpp"
-#include "../Position/Position.hpp"
-
-class PlayablePosition : public Position
+#include "../Interfaces/IPosition.hpp"
+class PlayablePosition : public IPosition
 {
-private:
-    Piece* content;
 public:
-    PlayablePosition();
 
-    virtual bool playable();
-    virtual void setContent(Piece*);
+    PlayablePosition();
+    bool playable();
+    bool isEmpty();
+    void ConvertPiece();
+    Piece* getContent();
+    void Draw();  
 };
 
 #endif

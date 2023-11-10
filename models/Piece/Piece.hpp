@@ -1,18 +1,16 @@
 #ifndef PIECE_H
 #define PIECE_H
+#include "../Color/Color.hpp"
 
 class Piece
 {
 private:
-    bool Black;
+    Color color;
 public:
 
-    static char BlackSymbol;
-    static char WhiteSymbol;
-    static char EmptySymbol;
-
-    Piece(bool Black);
-    bool IsBlack();
+    Piece(Color Black);
+    Piece(Piece &p);
+    void Draw();
     void Convert();
 
 };
