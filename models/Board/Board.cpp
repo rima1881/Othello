@@ -89,6 +89,19 @@ std::vector<Coordinate> Board::getAvailableCoordinate(){
 }
 
 
+int Board::Count(Color c){
+
+    int res = 0;
+
+    for(int i = 0; i < 9 ; i++)
+        for(int j=0 ; j < 9; j++)
+            if(!(map[i][j] -> isEmpty()) && map[i][j] -> getContent() -> getColor() == c)
+                res++;
+
+    
+    return res;
+}
+
 void Board::Refresh(Color refreshFor) {
 
 

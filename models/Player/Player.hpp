@@ -10,6 +10,7 @@ private:
 
     std::string name;
     bool isBlack;
+    int score;
 
 public:
 
@@ -18,6 +19,9 @@ public:
     bool IsBlack();
     std::string getName();
     Coordinate takeTurn(std::vector<Coordinate> availablePositions);
+
+    void setScore(int);
+    int getScore();
     
 };
 

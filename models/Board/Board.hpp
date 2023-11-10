@@ -46,6 +46,7 @@ public:
     void Draw();
     void Refresh(Color);
     void Put(Coordinate,Color);
+    int Count(Color);
     std::vector<Coordinate> getAvailableCoordinate();
 
 

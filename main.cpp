@@ -4,18 +4,21 @@
 
 int main(){
 
+    Game game;
+
     try{
-        Game::LoadData("db/General.txt");
+        game.LoadData("db/General.txt");
     }
     catch(Error err){
         std::cout << err.getMsg();
     }
 
 
-    Game::Start();
-    Game::Run();
+    game.Start();
+    game.Run();
 
-    Game::FinalMSG();
+    
+    game.FinalMSG();
 
     return 0;
 }

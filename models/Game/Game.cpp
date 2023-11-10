@@ -5,15 +5,14 @@
 #include "../Piece/Piece.hpp"
 #include "../UnPlayablePosition/UnPlayablePosition.hpp"
 
+Game::Game(){
 
-Player* Game::Player1;
-Player* Game::Player2;
-Board* Game::board;
-int Game::initialMapsNumber = 1;
-std::string Game::savedGamesFileAddress = "";
-bool Game::blackTurn = false;
+    blackTurn = false;
+    endGame = 0;
+    savedGamesFileAddress = "";
+    initialMapsNumber = 1;
 
-
+}
 
 
 //This function loads the defaults of the program
@@ -115,6 +114,7 @@ void Game::Run(){
         board -> Refresh(c);
 
         render();
+        showScores();
 
         std::vector<Coordinate> AV = board -> getAvailableCoordinate();
 
@@ -126,8 +126,13 @@ void Game::Run(){
             Coordinate co = blackTurn ? Player2 -> takeTurn(AV) : Player1 -> takeTurn(AV);
             board -> Put(co,c);
 
-        }          
+            endGame = 0;
 
+        }else
+            endGame++;
+
+        if(endGame == 2)
+            break;
         
         blackTurn = !blackTurn;
     }
@@ -137,5 +142,22 @@ void Game::Run(){
 
 
 void Game::FinalMSG(){
+    std::string winner = Player1 -> getScore() > Player2 -> getScore() ? Player1 -> getName() : Player2 -> getName();
+
+    std::cout << winner << "has won :O\n";
+
+    showScores();
+}
+
+void Game::showScores(){
+
+    Player1 -> setScore( board -> Count (Color::White));
+    Player2 -> setScore( board -> Count (Color::Black));
+
+    std::cout << Player1 -> getName() << ": " << Player1 -> getScore();
+    std::cout << std::endl;
+    std::cout << Player2 -> getName() << ": " << Player2 -> getScore();
+    std::cout << std::endl;
+
 
 }

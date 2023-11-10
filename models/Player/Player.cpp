@@ -52,3 +52,11 @@ Coordinate Player::takeTurn(std::vector<Coordinate> availablePositions){
     return Coordinate(i,j);
     
 }
+
+void Player::setScore(int s){
+    this -> score = s;
+}
+
+int Player::getScore(){
+    return this -> score;
+}
