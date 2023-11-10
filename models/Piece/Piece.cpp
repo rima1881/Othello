@@ -33,3 +33,7 @@ std::ostream& operator<<(std::ostream& os, const Piece& p){
     return os;
 
 }
+
+Color Piece::getColor(){
+    return this -> color;
+}

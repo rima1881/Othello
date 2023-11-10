@@ -12,6 +12,7 @@ public:
     Piece(Color Black);
     Piece(Piece &p);
     void Convert();
+    Color getColor();
 
     friend std::ostream& operator<<(std::ostream& os, const Piece& p);
 

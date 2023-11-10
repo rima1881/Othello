@@ -16,7 +16,7 @@ bool UnPlayablePosition::playable(){
     return false;
 }
 bool UnPlayablePosition::isEmpty(){
-    return false;
+    return true;
 }
 
 

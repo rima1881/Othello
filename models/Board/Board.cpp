@@ -62,6 +62,7 @@ void Board::Draw(){
     for(int i=0;i<10;i++){
 
         for(int j=0;j<10;j++){
+            std::cout << " ";
             map[i][j] -> Draw();
         }
 
@@ -88,7 +89,80 @@ std::vector<Coordinate> Board::getAvailableCoordinate(){
 }
 
 
-void Board::Refresh(Color refreshFor) { }
+void Board::Refresh(Color refreshFor) {
+
+
+    resetPlayables();
+
+
+    for(int i = 1; i < 9; i++){
+
+        for(int j = 1; j < 9; j++){
+            
+            if(map[i][j] -> isEmpty()){
+                std::array<bool,8> availableDirs = check_Position(i,j,refreshFor);
+                if(availableDirs[0] || availableDirs[1] || availableDirs[2] || availableDirs[3] || availableDirs[4] || availableDirs[5] || availableDirs[6] || availableDirs[7]){
+
+                    delete(map[i][j]);
+                    map[i][j] = new PlayablePosition(Coordinate(i,j), availableDirs);
+
+                }
+            }
+        }
+    }
+
+
+}
+
+void Board::resetPlayables(){
+
+    for(int i=1;i<9;i++)
+        for(int j=1;j < 9;j++)
+            if(map[i][j] -> isEmpty()){
+                delete(map[i][j]);
+                map[i][j] = new UnPlayablePosition(Coordinate(i,j));
+            }
+
+}
+
+void Board::Put(Coordinate co,Color color){
+
+    int i = co.getI() , j = co.getJ();
+
+    if(!map[i][j]->playable())
+        throw 12;
+
+    std::array<bool,8> dirs = static_cast<PlayablePosition *> (map[i][j]) -> getConvertableDirections();
+
+    if(dirs[0])
+        convert0(i,j, color);
+
+    if(dirs[1])
+        convert45(i,j, color);
+
+    if(dirs[2])
+        convert90(i,j, color);
+
+    if(dirs[3])
+        convert135(i,j, color);
+
+    if(dirs[4])
+        convert180(i,j, color);
+
+    if(dirs[5])
+        convert225(i,j, color);
+
+    if(dirs[6])
+        convert270(i,j, color);
+
+    if(dirs[7])
+        convert315(i,j, color);
+
+    delete(map[i][j]);
+    map[i][j] = new FilledPosition(new Piece(color),co);
+
+
+}
 
 /*
 -----------------

@@ -34,7 +34,7 @@ Coordinate Player::takeTurn(std::vector<Coordinate> availablePositions){
     while (true)
     {
         std::cout << this -> name << "(i j): ";
-        std::cin >> i >> j;
+        std::cin >> j>> i;
 
         for(Coordinate con : availablePositions)
             if(con.getI() == i && con.getJ() == j){

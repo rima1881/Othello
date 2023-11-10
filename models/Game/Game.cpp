@@ -111,15 +111,24 @@ void Game::Run(){
     while(true){
 
 
-        Game::board -> Refresh(blackTurn ? Color::Black : Color::White);
+        Color c = blackTurn ? Color::Black : Color::White;
+        board -> Refresh(c);
 
-        Game::render();
+        render();
 
-        if(blackTurn)
-            Player2 -> takeTurn(Game::board -> getAvailableCoordinate());
-        else
-            Player1 -> takeTurn(Game::board -> getAvailableCoordinate());
+        std::vector<Coordinate> AV = board -> getAvailableCoordinate();
 
+        bool hasOption = AV.size() != 0;
+
+
+        if(hasOption){
+
+            Coordinate co = blackTurn ? Player2 -> takeTurn(AV) : Player1 -> takeTurn(AV);
+            board -> Put(co,c);
+
+        }          
+
+        
         blackTurn = !blackTurn;
     }
     

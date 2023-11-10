@@ -18,7 +18,7 @@ public:
     Piece* getContent();
     void Draw();  
     Coordinate getCoordinate();
-
+    ~FilledPosition();
 
 
 };

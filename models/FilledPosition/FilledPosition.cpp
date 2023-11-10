@@ -25,3 +25,6 @@ void FilledPosition::Draw(){
 Coordinate FilledPosition::getCoordinate(){
     return co;
 }
+FilledPosition::~FilledPosition(){
+    delete(piece);
+}

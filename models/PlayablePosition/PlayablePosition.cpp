@@ -1,9 +1,7 @@
 #include "./PlayablePosition.hpp"
 #include <iostream>
 
-PlayablePosition::PlayablePosition(Coordinate data) : co(data) {
-
-}
+PlayablePosition::PlayablePosition(Coordinate data,std::array<bool,8> ConDir) : co(data) , ConvertableDirections(ConDir) { }
 
 bool PlayablePosition::playable(){
     return true;
@@ -28,4 +26,12 @@ void PlayablePosition::Draw(){
 
 Coordinate PlayablePosition::getCoordinate(){
     return this -> co;
+}
+
+void PlayablePosition::setConvertableDirections(std::array<bool,8> ConDir){
+    this -> ConvertableDirections = ConDir;
+}
+
+std::array<bool,8> PlayablePosition::getConvertableDirections(){
+    return this -> ConvertableDirections;
 }
