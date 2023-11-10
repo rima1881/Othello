@@ -15,8 +15,8 @@ int main(){
 
     while (game.Menu())
     {
-        game.Run();
-        game.FinalMSG();
+        if(game.Run())
+            game.FinalMSG();
     }
     
 

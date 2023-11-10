@@ -41,7 +41,7 @@ public:
     //General functions
     void LoadData(std::string general);
     bool Menu();
-    void Run();
+    bool Run();
     void FinalMSG();
 
 

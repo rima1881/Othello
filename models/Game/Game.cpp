@@ -81,7 +81,46 @@ void Game::loadMap(std::string address){
 
 
 bool Game::saveGame(){
-    return false;
+
+    std::string name;
+    std::cout << "\nplease enter a name for save:";
+    std::cin >> name;
+
+    std::ofstream Save("db/Saves/" + name + ".txt");
+
+
+    for(int i=1;i < 9;i++){
+        for(int j=1;j < 9;j++){
+            if((*board)[i][j] -> isEmpty())
+                Save << ".";
+            else if((*board)[i][j] -> getContent() -> getColor() == Color::White)
+                Save << "W";
+            else
+                Save << "B";
+        }
+        Save << "\n";
+    }
+
+    Save << Player1 -> getName() << "\n" << Player2 -> getName();
+
+
+    Save.close();
+
+    std::ofstream Saves("db/" + savedGamesFileAddress);
+
+    for(int i=0;i < saveLists.size();i++){
+        Saves << saveLists[i] << "\n";
+    }
+
+    Saves << name;
+
+    Saves.close();
+
+    char res;
+    std::cout << "Do you want to Continue the Game:(y/N)";
+    std::cin >> res;    
+
+    return res == 'y';
 }
 
 void Game::render(){
@@ -243,7 +282,7 @@ void Game::loadGame(std::string address){
 
 }
 
-void Game::Run(){
+bool Game::Run(){
 
     while(true){
 
@@ -262,6 +301,15 @@ void Game::Run(){
         if(hasOption){
 
             Coordinate co = blackTurn ? Player2 -> takeTurn(AV) : Player1 -> takeTurn(AV);
+
+            if(co.getI() == -50)
+                if(saveGame())
+                    return false;
+            else if(co.getI() == -100){
+                Player1 -> setScore(-100);
+                return true;
+            }
+            
             board -> Put(co,c);
 
             endGame = 0;
@@ -270,7 +318,7 @@ void Game::Run(){
             endGame++;
 
         if(endGame == 2)
-            break;
+            return true;
         
         blackTurn = !blackTurn;
     }

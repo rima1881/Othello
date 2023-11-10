@@ -28,14 +28,29 @@ Coordinate Player::takeTurn(std::vector<Coordinate> availablePositions){
 
     bool endFun = false;
 
+
+    std::string input;
     int i,j;
     
 
     while (true)
     {
-        std::cout << this -> name << "(i j): ";
-        std::cin >> j>> i;
+        std::cout << std::endl;
+        std::cout << "Enter quit to surrender or save to save the game\n";
+        std::cout << this -> name << "(i j):" << std::endl;
+        std::cin.ignore();
+        std::getline(std::cin,input);
 
+        if(input == "uit")
+            return Coordinate(-100,-100);
+        else if(input == "ave")
+            return Coordinate(-50,-50);
+
+        j = (int) input[0] - 48;
+        i = (int) input[2] - 48;
+
+        std::cout << input << "\n";
+        std::cout << i << "\t" << j;
         for(Coordinate con : availablePositions)
             if(con.getI() == i && con.getJ() == j){
                 endFun = true;
@@ -46,7 +61,7 @@ Coordinate Player::takeTurn(std::vector<Coordinate> availablePositions){
         if(endFun)  
             break;
 
-        std::cout << "Can not place on the given Coordianates\n"; 
+        std::cout << "\nCan not place on the given Coordianates\n"; 
     }
 
     return Coordinate(i,j);
