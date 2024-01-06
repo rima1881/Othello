@@ -1,6 +1,5 @@
 #include <iostream>
 #include "./models/Game/Game.hpp"
-#include "./models/Error/Error.hpp"
 
 int main(){
 

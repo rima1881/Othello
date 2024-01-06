@@ -26,7 +26,7 @@ EmptyPosition* Player::takeTurn(std::vector<EmptyPosition*> availablePositions){
     {
         std::cout << std::endl;
         std::cout << this -> name << "(i j):" << std::endl;
-        std::cin >> j >> i;
+        std::cin >> i >> j;
 
         for(EmptyPosition* pos : availablePositions)
             if(pos->getI() == i && pos->getJ() == j)

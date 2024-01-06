@@ -13,6 +13,16 @@ Board::Board(){
         for(int j = 1 ;j < 9;j++)
             map[i][j] = new EmptyPosition(i,j);
 
+
+    delete map[4][4];
+    map[4][4] = new FilledPosition(5,5,true);
+    delete map[4][5];
+    map[4][5] = new FilledPosition(5,6,false);
+    delete map[5][4];
+    map[5][4] = new FilledPosition(6,5,false);
+    delete map[5][5];
+    map[5][5] = new FilledPosition(6,6,true);
+
 }
 
 
@@ -141,6 +151,8 @@ int Board::Count(bool color){
 
 void Board::Refresh(bool color) {
 
+
+
     for(int i = 1; i < 9; i++)
         for(int j = 1; j < 9; j++)
             if(map[i][j] -> getContent() == Content::Empty)
@@ -153,13 +165,12 @@ void Board::Refresh(bool color) {
 
 void Board::checkPositions(EmptyPosition* pos , bool color){
 
-    std::array<bool,8> avaibleDirections;
-
+    std::array<bool,8> avaibleDirections = { false , false , false , false , false , false, false, false};
     Location initialLoction = pos->getLocation();
+
 
     for(int i=0;i<8;i++)
         avaibleDirections[i] = checkDirection(movingStrategy[i], initialLoction, color);
-
 
     pos -> setAvailableDirs(avaibleDirections);
 
@@ -173,7 +184,7 @@ bool Board::checkDirection(std::function<Location(Location loc)> direction , Loc
     Location next = direction(initialLocation);
     Content c = color ? Content::White : Content::Black;
 
-    if(map[next.i][next.j]->getContent() == c)
+    if(map[next.i][next.j]->getContent() == Content::Empty || map[next.i][next.j]->getContent() == c)
         return false;
 
     next = direction(next);

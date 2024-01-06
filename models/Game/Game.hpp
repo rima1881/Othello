@@ -15,7 +15,7 @@ private:
     
     Player* Player1;
     Player* Player2;
-    Board board;
+    Board* board;
 
     //Managing functions
     void newGame(std::string name1,std::string name2);
@@ -31,7 +31,7 @@ public:
     Game();
 
     void Menu();
-    bool Run();
+    void Run();
     void FinalMSG();
 
 
