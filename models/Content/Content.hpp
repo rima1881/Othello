@@ -2,9 +2,10 @@
 #define COLOR_H
 #include <iostream>
 
-enum class Color{
+enum class Content{
     Black,
-    White
+    White,
+    Empty
 };
 
 #endif

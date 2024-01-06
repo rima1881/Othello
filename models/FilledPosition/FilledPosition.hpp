@@ -1,25 +1,17 @@
 #ifndef FILLEDPOSION_H
 #define FILLEDPOSTION_H
-#include "../Piece/Piece.hpp"
-#include "../Interfaces/IPosition.hpp"
-#include "../Coordinate/Coordinate.hpp"
+#include "../Position/Position.hpp"
 
-class FilledPosition : public IPosition
+class FilledPosition : public Position
 {
-private:
-    Piece* piece;
-    Coordinate co;
 public:
 
-    FilledPosition(Piece*,Coordinate);
-    bool playable();
-    bool isEmpty();
-    void ConvertPiece();
-    Piece* getContent();
-    void Draw();  
-    Coordinate getCoordinate();
-    ~FilledPosition();
+    FilledPosition(int i,int j,bool color);
 
+    //IPosition
+    void Draw();
+    bool Playable();
+    void Convert();
 
 };
 

@@ -9,24 +9,16 @@ class Game
 {
 private:
 
-    bool blackTurn;
+    bool color;
     int endGame;
 
-    std::string savedGamesFileAddress;
-    std::vector<std::string> saveLists;
-    int initialMapsNumber;
     
     Player* Player1;
     Player* Player2;
-    Board* board;
+    Board board;
 
     //Managing functions
-    void newGame(int state,std::string name1,std::string name2);
-    bool load();
-    void loadGame(std::string address);
-    bool loadSaves();
-    void loadMap(std::string address);
-    bool saveGame();
+    void newGame(std::string name1,std::string name2);
 
 
     //onGame funcs
@@ -38,14 +30,9 @@ public:
 
     Game();
 
-    //General functions
-    void LoadData(std::string general);
-    bool Menu();
+    void Menu();
     bool Run();
     void FinalMSG();
-
-
-    //Getters
 
 
 

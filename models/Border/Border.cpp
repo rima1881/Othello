@@ -1,13 +1,20 @@
 #include "Border.hpp"
 
-Border::Border(Coordinate data) : UnPlayablePosition(data) { }
+Border::Border(int i,int j) : Position(i,j,Content::Empty) {
+
+
+}
 
 
 void Border::Draw() {
 
-    if(co.getI() == 0 && co.getJ() != 9)
-        std::cout << co.getJ();
-    else if(co.getJ() == 0 && co.getI() != 9)
-        std::cout << co.getI();
+    if(i == 0 && j != 9)
+        std::cout << j;
+    else if(j == 0 && i != 9)
+        std::cout << i;
 
+}
+
+bool Border::Playable(){
+    return false;
 }

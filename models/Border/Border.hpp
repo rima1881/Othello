@@ -1,12 +1,14 @@
 #ifndef BORDER_H
 #define BORDER_H
-#include "../UnPlayablePosition/UnPlayablePosition.hpp"
+#include "../Position/Position.hpp"
 
-class Border : public UnPlayablePosition
+class Border : public Position
 {
 public:
-    Border(Coordinate);
+    Border(int i,int j);
+
     void Draw();
+    bool Playable();
 };
 
 #endif

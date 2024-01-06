@@ -1,30 +1,27 @@
 #include "./FilledPosition.hpp"
 
 
-FilledPosition::FilledPosition(Piece* p,Coordinate data) : co(data){
-    this -> piece = p;
-}
+FilledPosition::FilledPosition(int i,int j,bool color) : Position(i,j,color ? Content::White : Content::Black){ }
 
-bool FilledPosition::playable(){
+bool FilledPosition::Playable(){
     return false;
 }
-bool FilledPosition::isEmpty(){
-    return false;
-}
-void FilledPosition::ConvertPiece(){
-    this -> piece -> Convert();
+
+
+void FilledPosition::Convert(){
+
+    if(this -> content == Content::Black)
+        this -> content = Content::White;
+    else
+        this -> content = Content::Black;
+
 }
 
-Piece* FilledPosition::getContent(){
-    return this -> piece;
-}
 void FilledPosition::Draw(){
-    std::cout << *piece;
-}
 
-Coordinate FilledPosition::getCoordinate(){
-    return co;
-}
-FilledPosition::~FilledPosition(){
-    delete(piece);
+    if(this -> content == Content::Black)
+        std::cout << "B";
+    else
+        std::cout << "W";
+
 }

@@ -3,25 +3,32 @@
 
 #include <string>
 #include <vector>
-#include "../Coordinate/Coordinate.hpp"
+#include "../EmptyPosition/EmptyPosition.hpp"
+
 class Player
 {
 private:
 
     std::string name;
-    bool isBlack;
+    bool color;
     int score;
 
 public:
 
-    Player(std::string name,bool is_black);
-    std::string Color();
-    bool IsBlack();
-    std::string getName();
-    Coordinate takeTurn(std::vector<Coordinate> availablePositions);
+    Player(std::string name,bool color);
+    
 
+    EmptyPosition* takeTurn(std::vector<EmptyPosition*> availablePositions);
+
+
+    //setters
     void setScore(int);
+
+    //getters
+    bool getColor();
     int getScore();
+    std::string getName();
+
     
 };
 
