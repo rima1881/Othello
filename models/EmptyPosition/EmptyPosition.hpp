@@ -6,12 +6,13 @@ class EmptyPosition : public Position
 {
 private:
 
-    bool availableDirs[8];
+    std::array<bool,8> availableDirs;
 
 public:
 
     EmptyPosition(int i,int j);
-    void setAvailableDirs(bool[8]);
+    void setAvailableDirs(std::array<bool,8>);
+    std::array<bool,8> getAvailableDirs();
 
     bool Playable();
     void Draw();

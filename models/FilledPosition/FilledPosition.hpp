@@ -8,7 +8,6 @@ public:
 
     FilledPosition(int i,int j,bool color);
 
-    //IPosition
     void Draw();
     bool Playable();
     void Convert();

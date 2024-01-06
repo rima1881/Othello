@@ -42,5 +42,9 @@ void EmptyPosition::Draw(){
 
 
 void EmptyPosition::setAvailableDirs(std::array<bool,8> ConDir){
-    this -> availableDirs = ConDir;
+    availableDirs = ConDir;
+}
+
+std::array<bool,8> EmptyPosition::getAvailableDirs(){
+    return availableDirs;
 }

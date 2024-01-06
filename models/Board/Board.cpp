@@ -102,7 +102,7 @@ void Board::Put(EmptyPosition* pos,bool Color){
     int i = pos -> getI();
     int j = pos -> getJ();
 
-    convertPositions(pos);
+    convertPositions(pos,Color);
 
     delete pos;
 
@@ -144,7 +144,7 @@ void Board::Refresh(bool color) {
     for(int i = 1; i < 9; i++)
         for(int j = 1; j < 9; j++)
             if(map[i][j] -> getContent() == Content::Empty)
-                    checkPosition((EmptyPosition*)map[i][j]);
+                    checkPositions((EmptyPosition*)map[i][j],color);
 
 
 }
@@ -153,7 +153,7 @@ void Board::Refresh(bool color) {
 
 void Board::checkPositions(EmptyPosition* pos , bool color){
 
-    bool avaibleDirections[8];
+    std::array<bool,8> avaibleDirections;
 
     Location initialLoction = pos->getLocation();
 
@@ -168,9 +168,51 @@ void Board::checkPositions(EmptyPosition* pos , bool color){
 
 
 
+bool Board::checkDirection(std::function<Location(Location loc)> direction , Location initialLocation , bool color){
 
-/*
------------------
-| | | | | | | | |
+    Location next = direction(initialLocation);
+    Content c = color ? Content::White : Content::Black;
 
-*/
+    if(map[next.i][next.j]->getContent() == c)
+        return false;
+
+    next = direction(next);
+    while (map[next.i][next.j]-> getContent() != Content::Empty)
+    {
+        if(map[next.i][next.j] -> getContent() == c)
+            return true;
+
+        next = direction(next);
+    }
+
+    return false;
+
+}
+
+
+void Board::convertPositions( EmptyPosition* pos , bool color){
+
+    std::array<bool,8> avDirs = pos -> getAvailableDirs();
+
+    for(int i=0;i<8;i++)
+        if(avDirs[i])
+            convertDirection(movingStrategy[i],pos -> getLocation(),color);
+
+}
+
+void Board::convertDirection(std::function<Location(Location loc)> direction , Location initialLocation , bool color){
+
+    Content c = color ? Content::White : Content::Black;
+
+    Location next = direction(initialLocation);
+
+    while(map[next.i][next.j] -> getContent() != c){
+
+        ((FilledPosition*) map[next.i][next.j]) -> Convert();
+
+        next = direction(next);
+
+    }
+ 
+
+}

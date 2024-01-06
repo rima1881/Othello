@@ -9,7 +9,7 @@ Player::Player(std::string name, bool color){
 
 bool Player::getColor(){
 
-    this -> color;
+    return this -> color;
 
 }
 

@@ -6,18 +6,11 @@ int main(){
 
     Game game;
 
-    try{
-        game.LoadData("db/General.txt");
-    }
-    catch(Error err){
-        std::cout << err.getMsg();
-    }
+    
 
-    while (game.Menu())
-    {
-        if(game.Run())
-            game.FinalMSG();
-    }
+    game.Menu();
+    game.Run();
+    game.FinalMSG();
     
 
 
